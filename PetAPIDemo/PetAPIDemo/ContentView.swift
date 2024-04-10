@@ -8,26 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var service = PetService()
-    
+    @StateObject var vm = PetViewModel()
     var body: some View {
-        VStack {
-            Text("Fetch API")
-            Button {
-                Task {
-                    do {
-                        let pets = try await PetService.fetchPets()
-                        print(pets)
-                    } catch {
-                        print("Error fetching pets: \(error)")
-                    }
-                }
-            } label: {
-                Image(systemName: "circle.fill")
-                    .font(.largeTitle)
-            }
+        switch vm.state {
+            case .idle:
+                IdleView(vm: vm)
+            case .loading:
+                LoadingView()
+            case .working:
+                PetListView(vm: vm)
         }
-        .padding()
     }
 }
 

@@ -1,3 +1,41 @@
+import Foundation
+// Frontend pet model
+
+struct Pet: Identifiable, Hashable {
+    let id = UUID()
+    let ageGroup: String
+    let ageString: String
+    let birthDate: String
+    let breedPrimary: String
+    let breedSecondary: String
+    let colorDetails: String
+    let descriptionText: String
+    let name: String
+    let pictureThumbnailUrl: String
+    let sex: String
+    let sizeUOM: String
+    let createdDate, updatedDate: String
+    
+    static var example: Pet {
+        Pet(
+            ageGroup: "Young",
+            ageString: "1",
+            birthDate: "February 1",
+            breedPrimary: "Bulldog",
+            breedSecondary: "Poodle",
+            colorDetails: "Brown and white",
+            descriptionText: "Looks like my cousin's ugly dog. Has a good heart though.",
+            name: "Monster",
+            pictureThumbnailUrl: "https://cdn.rescuegroups.org/16/pictures/animals/100/100000/175990.jpg?width=100",
+            sex: "Male",
+            sizeUOM: "Pounds",
+            createdDate: "2008",
+            updatedDate: "2010")
+    }
+}
+
+
+
 // Request structs
 struct AnimalSearchRequest: Codable {
     let apikey: String
@@ -23,9 +61,6 @@ struct Filter: Codable {
 }
 
 // Response structs
-import Foundation
-
-// Define structs to represent JSON data
 
 struct AnimalData: Codable {
     let data: [Animal]
@@ -52,6 +87,12 @@ struct AnimalAttributes: Codable {
     let createdDate, updatedDate: String?
     // Add more attributes as needed
 }
+
+
+
+
+// Additional data including location stuffs
+
 
 //struct Relationships: Codable {
 //    let breeds: BreedRelationship?
