@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import UIKit
 
+@MainActor
 class PetViewModel: ObservableObject {
     @Published var pets: [Pet] = []
     @Published var state: loadingState = .idle
@@ -22,10 +24,9 @@ class PetViewModel: ObservableObject {
         let result = try await PetService.fetchPets()
         for animal in result.data {
             if qualityCheck(animal: animal) {
-                pets.append(constructPet(animal: animal))
+                await pets.append(try constructPet(animal: animal))
             }
         }
-        print(pets)
         state = .working
     }
     
@@ -35,20 +36,47 @@ class PetViewModel: ObservableObject {
         // might add more later tbd
     }
     
-    func constructPet(animal: Animal) -> Pet {
+    func constructPet(animal: Animal) async throws -> Pet {
+        // maybe move this stuff to service? idkkkk 
+        guard let url = URL(string: animal.attributes.pictureThumbnailUrl!) else {
+            print("URL failed")
+            throw NSError()
+        }
+        
+        do {
+            let data = try Data(contentsOf: url) // getting a thread error here because using sync instead of async. Fix how?
+            let image = UIImage(data: data)
+            
+            return Pet(
+                ageGroup: animal.attributes.name ?? "Unknown",
+                ageString: animal.attributes.ageString ?? "Unknown",
+                birthDate: animal.attributes.birthDate ?? "Unknown",
+                breedPrimary: animal.attributes.breedPrimary ?? "Unknown",
+                breedSecondary: animal.attributes.breedSecondary ?? "Unknown",
+                colorDetails: animal.attributes.colorDetails ?? "N/A",
+                descriptionText: animal.attributes.descriptionText ?? "No description text provided",
+                name: animal.attributes.name ?? "Fido",
+                pictureThumbnailUrl: image,
+                sex: animal.attributes.sex ?? "Unknown",
+                sizeUOM: animal.attributes.sizeUOM ?? "Unknown",
+                createdDate: animal.attributes.createdDate ?? "Unknown",
+                updatedDate: animal.attributes.updatedDate ?? "Unknown")
+        } catch {
+            print("Data failed")
+        }
         return Pet(
-            ageGroup: animal.attributes.name ?? "Unknown",
-            ageString: animal.attributes.ageString ?? "Unknown",
-            birthDate: animal.attributes.birthDate ?? "Unknown",
-            breedPrimary: animal.attributes.breedPrimary ?? "Unknown",
-            breedSecondary: animal.attributes.breedSecondary ?? "Unknown",
-            colorDetails: animal.attributes.colorDetails ?? "N/A",
-            descriptionText: animal.attributes.descriptionText ?? "No description text provided",
-            name: animal.attributes.name ?? "Fido",
-            pictureThumbnailUrl: animal.attributes.pictureThumbnailUrl!,
-            sex: animal.attributes.sex ?? "Unknown",
-            sizeUOM: animal.attributes.sizeUOM ?? "Unknown",
-            createdDate: animal.attributes.createdDate ?? "Unknown",
-            updatedDate: animal.attributes.updatedDate ?? "Unknown")
+            ageGroup: "Failed",
+            ageString: "Failed",
+            birthDate: "Failed",
+            breedPrimary: "Failed",
+            breedSecondary: "Failed",
+            colorDetails: "Failed",
+            descriptionText: "Failed",
+            name: "Failed",
+            pictureThumbnailUrl: nil,
+            sex: "Failed",
+            sizeUOM: "Failed",
+            createdDate: "Failed",
+            updatedDate: "Failed")
     }
 }

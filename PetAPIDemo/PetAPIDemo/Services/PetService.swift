@@ -25,7 +25,7 @@ class PetService: ObservableObject {
             objectAction: "publicSearch",
             search: Search(
                 resultStart: 0,
-                resultLimit: 1,
+                resultLimit: 25,
                 resultSort: "animalID",
                 resultOrder: "asc",
                 calcFoundRows: "Yes",

@@ -1,6 +1,7 @@
 import Foundation
+import UIKit
 // Frontend pet model
-
+// probably not necessary. Might move the logic back to Animal struct for concision.
 struct Pet: Identifiable, Hashable {
     let id = UUID()
     let ageGroup: String
@@ -11,13 +12,22 @@ struct Pet: Identifiable, Hashable {
     let colorDetails: String
     let descriptionText: String
     let name: String
-    let pictureThumbnailUrl: String
+    let pictureThumbnailUrl: UIImage?
     let sex: String
     let sizeUOM: String
     let createdDate, updatedDate: String
     
     static var example: Pet {
-        Pet(
+        let url = URL(string: "https://cdn.rescuegroups.org/16/pictures/animals/100/100000/175990.jpg?width=100")
+        var image: UIImage?
+        do {
+            let data = try Data(contentsOf: url!)
+            let image = UIImage(data: data)
+        } catch {
+            print("Image failed")
+        }
+        
+        return Pet(
             ageGroup: "Young",
             ageString: "1",
             birthDate: "February 1",
@@ -26,7 +36,7 @@ struct Pet: Identifiable, Hashable {
             colorDetails: "Brown and white",
             descriptionText: "Looks like my cousin's ugly dog. Has a good heart though.",
             name: "Monster",
-            pictureThumbnailUrl: "https://cdn.rescuegroups.org/16/pictures/animals/100/100000/175990.jpg?width=100",
+            pictureThumbnailUrl: image,
             sex: "Male",
             sizeUOM: "Pounds",
             createdDate: "2008",
