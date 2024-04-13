@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct SwipeView: View {
-    private var pets: [Pet] = [Pet.example, Pet.example, Pet.example].reversed()
+    private var pets: [Pet] = [Pet.example, Pet.example, Pet.example, Pet.example, Pet.example, Pet.example, ].reversed()
     
     var body: some View {
         VStack {
             ZStack {
-                ForEach(pets, id: \.self) { pet_item in
+                Image("whisker-bg")
+                    .resizable()
+                    .ignoresSafeArea()
+                    .scaledToFill()
+                ForEach(pets) { pet_item in
                     CardView(pet: Pet.example)
                 }
             }
