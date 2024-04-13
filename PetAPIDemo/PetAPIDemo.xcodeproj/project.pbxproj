@@ -12,6 +12,7 @@
 		F8577AD52BC6F3C000EC6EC4 /* PetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8577AD42BC6F3C000EC6EC4 /* PetListView.swift */; };
 		F8577AD72BC6F4B000EC6EC4 /* IdleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8577AD62BC6F4B000EC6EC4 /* IdleView.swift */; };
 		F8577AD92BC6F81000EC6EC4 /* PetCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8577AD82BC6F81000EC6EC4 /* PetCardView.swift */; };
+		F8B96B6A2BCA146700529110 /* PetCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B96B692BCA146700529110 /* PetCardViewModel.swift */; };
 		F8D761562BBCAC270012EB87 /* PetAPIDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D761552BBCAC270012EB87 /* PetAPIDemoApp.swift */; };
 		F8D761582BBCAC270012EB87 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D761572BBCAC270012EB87 /* ContentView.swift */; };
 		F8D7615A2BBCAC280012EB87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8D761592BBCAC280012EB87 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 		F8577AD42BC6F3C000EC6EC4 /* PetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListView.swift; sourceTree = "<group>"; };
 		F8577AD62BC6F4B000EC6EC4 /* IdleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdleView.swift; sourceTree = "<group>"; };
 		F8577AD82BC6F81000EC6EC4 /* PetCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCardView.swift; sourceTree = "<group>"; };
+		F8B96B692BCA146700529110 /* PetCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCardViewModel.swift; sourceTree = "<group>"; };
 		F8D761522BBCAC270012EB87 /* PetAPIDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetAPIDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8D761552BBCAC270012EB87 /* PetAPIDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetAPIDemoApp.swift; sourceTree = "<group>"; };
 		F8D761572BBCAC270012EB87 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -50,6 +52,7 @@
 			isa = PBXGroup;
 			children = (
 				F8577ACC2BC6E77600EC6EC4 /* PetViewModel.swift */,
+				F8B96B692BCA146700529110 /* PetCardViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8B96B6A2BCA146700529110 /* PetCardViewModel.swift in Sources */,
 				F8D761642BBCAC870012EB87 /* PetService.swift in Sources */,
 				F8577AD92BC6F81000EC6EC4 /* PetCardView.swift in Sources */,
 				F8577ACD2BC6E77600EC6EC4 /* PetViewModel.swift in Sources */,

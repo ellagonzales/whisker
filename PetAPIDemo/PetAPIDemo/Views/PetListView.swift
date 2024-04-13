@@ -14,7 +14,7 @@ struct PetListView: View {
         NavigationStack {
             // List of pet card views
             List(vm.pets, id: \.self) { pet in
-                PetCardView(pet: pet)
+                PetCardView(vm: PetCardViewModel(pet: pet))
             }
         }
     }

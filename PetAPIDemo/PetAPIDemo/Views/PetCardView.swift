@@ -8,28 +8,28 @@
 import SwiftUI
 
 struct PetCardView: View {
-    var pet: Pet
+    @StateObject var vm: PetCardViewModel
     @State var isHidden = true
     
     var body: some View {
         VStack{
-            
-            if let image = pet.pictureThumbnailUrl {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 200)
-            } else {
-                Text("No image available")
-            }
+                if let image = try? vm.getImage() {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200)
+                } else {
+                    Text("No image available")
+                }
+
             VStack(alignment: .leading) {
                 HStack {
-                    Text(pet.name)
+                    Text(vm.getName())
                         .fontWeight(.semibold)
-                    Text(pet.sex)
+                    Text(vm.getSex())
                         .foregroundStyle(.secondary)
                     Spacer()
-                    Text(pet.breedPrimary)
+                    Text(vm.getPrimaryBreed())
                         .foregroundStyle(.secondary)
                 }
                 .padding(.vertical, 5)
@@ -43,7 +43,7 @@ struct PetCardView: View {
                     }
                 }
                 if !isHidden {
-                    Text(pet.descriptionText)
+                    Text(vm.getDescription())
                 }
             } .padding()
         }
@@ -51,5 +51,5 @@ struct PetCardView: View {
 }
 
 #Preview {
-    PetCardView(pet: Pet.example)
+    PetCardView(vm: PetCardViewModel(pet: Animal.example))
 }

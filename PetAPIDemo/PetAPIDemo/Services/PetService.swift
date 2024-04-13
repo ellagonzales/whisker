@@ -11,7 +11,7 @@ class PetService: ObservableObject {
     private static let decoder = JSONDecoder()
     private static let encoder = JSONEncoder()
     
-    static func fetchPets() async throws -> AnimalData {
+    static func fetchPets() async throws -> [Animal] {
         guard let url = URL(string: "https://api.rescuegroups.org/v5/public/animals/search") else {
             fatalError("Invalid URL")
         }
@@ -42,6 +42,14 @@ class PetService: ObservableObject {
         
         let result = try decoder.decode(AnimalData.self, from: data)
         
-        return result
+        // for animal in result, if url is nil, remove it
+        var cleanedResult: [Animal] = []
+        for animal in result.data {
+            if animal.attributes.pictureThumbnailUrl != nil {
+                cleanedResult.append(animal)
+            }
+        }
+
+        return cleanedResult
     }
 }
