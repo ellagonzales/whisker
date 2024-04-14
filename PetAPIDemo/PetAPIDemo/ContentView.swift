@@ -16,7 +16,7 @@ struct ContentView: View {
             case .loading:
                 LoadingView()
             case .working:
-                PetListView(vm: vm)
+                SwipeView(vm: vm)
         }
     }
 }

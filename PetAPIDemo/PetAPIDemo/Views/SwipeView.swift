@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SwipeView: View {
-    private var pets: [Pet] = [Pet.example, Pet.example, Pet.example, Pet.example, Pet.example, Pet.example, ].reversed()
+    @StateObject var vm: PetViewModel
     
     var body: some View {
         VStack {
@@ -17,8 +17,8 @@ struct SwipeView: View {
                     .resizable()
                     .ignoresSafeArea()
                     .scaledToFill()
-                ForEach(pets) { pet_item in
-                    CardView(pet: Pet.example)
+                ForEach(vm.pets, id: \.self) { pet in
+                    CardView(vm: PetCardViewModel(pet: pet))
                 }
             }
         }
@@ -26,5 +26,5 @@ struct SwipeView: View {
 }
 
 #Preview {
-    SwipeView()
+    SwipeView(vm: PetViewModel())
 }

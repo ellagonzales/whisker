@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DetailsView: View {
-    var pet: Pet
+    @ObservedObject var vm: PetCardViewModel
     @Binding var showingMoreInfo: Bool
     @State var isDescriptionExpanded: Bool = false
 
@@ -18,20 +18,15 @@ struct DetailsView: View {
                 HStack {
                     Text("Name")
                     Spacer()
-                    Text(pet.name)
-                }
-                HStack {
-                    Text("Species")
-                    Spacer()
-                    Text(pet.breedPrimary)
+                    Text(vm.getName())
                 }
                 HStack {
                     Text("Breed")
                     Spacer()
-                    Text(pet.breedSecondary)
+                    Text(vm.getPrimaryBreed())
                 }
                 DisclosureGroup("Description", isExpanded: $isDescriptionExpanded) {
-                    Text(pet.descriptionText)
+                    Text(vm.getDescription())
                         .font(.body)
                 }
             }
@@ -40,17 +35,17 @@ struct DetailsView: View {
                 HStack {
                     Text("Age")
                     Spacer()
-                    Text("\(pet.ageString) (\(pet.ageGroup))")
+                    Text("\(vm.getAge()) (\(vm.getAgeGroup()))")
                 }
-                HStack {
-                    Text("Color")
-                    Spacer()
-                    Text(pet.colorDetails)
-                }
+//                HStack {
+//                    Text("Color")
+//                    Spacer()
+//                    Text(vm.getColorDetails())
+//                }
                 HStack {
                     Text("Sex")
                     Spacer()
-                    Text(pet.sex)
+                    Text(vm.getSex())
                 }
             }
             
@@ -75,7 +70,7 @@ struct DetailsView: View {
 struct DetailsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            DetailsView(pet: Pet.example, showingMoreInfo: .constant(true))
+            DetailsView(vm: PetCardViewModel(pet: Animal.example),showingMoreInfo: .constant(true))
         }
     }
 }

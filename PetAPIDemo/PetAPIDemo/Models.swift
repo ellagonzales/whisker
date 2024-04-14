@@ -6,18 +6,18 @@ struct AnimalSearchRequest: Codable {
     let apikey: String
     let objectType: String
     let objectAction: String
-    let search: Search
+//    let search: Search
 }
 
-struct Search: Codable {
-    let resultStart: Int
-    let resultLimit: Int
-    let resultSort: String
-    let resultOrder: String
-    let calcFoundRows: String
-    let filters: [Filter]
-    let fields: [String]
-}
+//struct Search: Codable {
+//    let resultStart: Int
+//    let resultLimit: Int
+//    let resultSort: String
+//    let resultOrder: String
+//    let calcFoundRows: String
+//    let filters: [Filter]
+//    let fields: [String]
+//}
 
 struct Filter: Codable {
     let fieldName: String
@@ -31,7 +31,7 @@ struct AnimalData: Codable {
     let data: [Animal]
 }
 
-struct Animal: Codable, Hashable {    
+struct Animal: Codable, Hashable {
     let attributes: AnimalAttributes
 //    let relationships: Relationships
     static var example: Animal {
@@ -76,66 +76,66 @@ struct AnimalAttributes: Codable, Hashable {
 // Additional data including location stuffs
 
 
-//struct Relationships: Codable {
-//    let breeds: BreedRelationship?
-//    let species: SpeciesRelationship?
-//    let statuses: StatusRelationship?
-//    let locations: LocationRelationship?
-//    let orgs: OrgRelationship?
-//}
-//
-//struct BreedRelationship: Codable {
-//    let data: [BreedData]
-//}
-//
-//struct BreedData: Codable {
-//    let type: String
-//    let id: String
-//}
-//
-//struct SpeciesRelationship: Codable {
-//    let data: [SpeciesData]
-//}
-//
-//struct SpeciesData: Codable {
-//    let type: String
-//    let id: String
-//}
-//
-//struct StatusRelationship: Codable {
-//    let data: [StatusData]
-//}
-//
-//struct StatusData: Codable {
-//    let type: String
-//    let id: String
-//}
-//
-//struct LocationRelationship: Codable {
-//    let data: [LocationData]
-//}
-//
-//struct LocationData: Codable {
-//    let type: String
-//    let id: String
-//}
-//
-//struct OrgRelationship: Codable {
-//    let data: [OrgData]
-//}
-//
-//struct OrgData: Codable {
-//    let type: String
-//    let id: String
-//}
-//
-//struct PictureRelationship: Codable {
-//    let data: [PictureData]
-//}
-//
-//struct PictureData: Codable {
-//    let type: String
-//    let id: String
-//}
+struct Relationships: Codable, Hashable {
+    let breeds: BreedRelationship?
+    let species: SpeciesRelationship?
+    let statuses: StatusRelationship?
+    let locations: LocationRelationship?
+    let orgs: OrgRelationship?
+}
+
+struct BreedRelationship: Codable, Hashable {
+    let data: [BreedData]
+}
+
+struct BreedData: Codable, Hashable {
+    let type: String
+    let id: String
+}
+
+struct SpeciesRelationship: Codable, Hashable {
+    let data: [SpeciesData]
+}
+
+struct SpeciesData: Codable, Hashable {
+    let type: String
+    let id: String
+}
+
+struct StatusRelationship: Codable, Hashable {
+    let data: [StatusData]
+}
+
+struct StatusData: Codable, Hashable {
+    let type: String
+    let id: String
+}
+
+struct LocationRelationship: Codable, Hashable {
+    let data: [LocationData]
+}
+
+struct LocationData: Codable, Hashable {
+    let type: String
+    let id: String
+}
+
+struct OrgRelationship: Codable, Hashable {
+    let data: [OrgData]
+}
+
+struct OrgData: Codable, Hashable {
+    let type: String
+    let id: String
+}
+
+struct PictureRelationship: Codable, Hashable {
+    let data: [PictureData]
+}
+
+struct PictureData: Codable, Hashable {
+    let type: String
+    let id: String
+}
 
 // Decode JSON data into Swift structs

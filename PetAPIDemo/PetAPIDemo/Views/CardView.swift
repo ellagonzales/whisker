@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CardView: View {
-    var pet: Pet
+    @ObservedObject var vm: PetCardViewModel
     @State private var offset = CGSize.zero
     @State private var color: Color = .white
     
@@ -24,22 +24,22 @@ struct CardView: View {
                 .shadow(radius: 4)
                 
             VStack {
-                AsyncImage(url: URL(string: pet.pictureThumbnailUrl)) { image in
-                    image
+                if let image = try? vm.getImage() {
+                    Image(uiImage: image)
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 350, height: 500)
-                } placeholder: {
-                    ProgressView()
+                        .scaledToFit()
+                        .frame(width: 250, height: 500)
+                } else {
+                    Text("No image available")
                 }
                 HStack {
-                    Text(pet.name)
+                    Text(vm.getName())
                         .font(.largeTitle)
                         .foregroundColor(.primary)
                         .bold()
                 }
                 HStack {
-                    Text("\(pet.breedPrimary), \(pet.breedSecondary)")
+                    Text("\(vm.getPrimaryBreed())")
                         .font(.callout)
                         .foregroundColor(.secondary)
                         .italic()
@@ -59,7 +59,7 @@ struct CardView: View {
             }
             
             if showingMoreInfo {
-                DetailsView(pet: pet, showingMoreInfo: $showingMoreInfo)
+                DetailsView(vm: vm, showingMoreInfo: $showingMoreInfo)
                     .zIndex(1)
                     .transition(.move(edge: .bottom))
             }
@@ -109,5 +109,5 @@ struct CardView: View {
 }
 
 #Preview {
-    CardView(pet: Pet.example)
+    CardView(vm: PetCardViewModel(pet: Animal.example))
 }

@@ -38,12 +38,28 @@ class PetCardViewModel: ObservableObject {
         return pet.attributes.sex ?? "Unknown"
     }
     
+    func getAge() -> String {
+        return pet.attributes.ageString ?? "Unknown"
+    }
+    
+    func getAgeGroup() -> String {
+        return pet.attributes.ageGroup ?? "Unknown"
+    }
+    
+    func getColorDetails() -> String {
+        return pet.attributes.colorDetails ?? "Unknown"
+    }
+    
     func getDescription() -> String {
         return pet.attributes.descriptionText ?? "Unknown"
     }
     
     func getPrimaryBreed() -> String {
         return pet.attributes.breedPrimary ?? "Unknown"
+    }
+    
+    func getSecondaryBreed() -> String {
+        return pet.attributes.breedSecondary ?? ""
     }
     
 }
