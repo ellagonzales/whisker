@@ -1,39 +1,16 @@
 import Foundation
 import UIKit
 
-// Request structs
-struct AnimalSearchRequest: Codable {
-    let apikey: String
-    let objectType: String
-    let objectAction: String
-//    let search: Search
-}
-
-//struct Search: Codable {
-//    let resultStart: Int
-//    let resultLimit: Int
-//    let resultSort: String
-//    let resultOrder: String
-//    let calcFoundRows: String
-//    let filters: [Filter]
-//    let fields: [String]
-//}
-
-struct Filter: Codable {
-    let fieldName: String
-    let operation: String
-    let criteria: String
-}
-
 // Response structs
 
 struct AnimalData: Codable {
     let data: [Animal]
+    let included: [Included]
 }
 
 struct Animal: Codable, Hashable {
     let attributes: AnimalAttributes
-//    let relationships: Relationships
+    
     static var example: Animal {
         let attributes = AnimalAttributes(
             ageGroup: "Young",
@@ -70,72 +47,31 @@ struct AnimalAttributes: Codable, Hashable {
     // Add more attributes as needed
 }
 
-
-
-
-// Additional data including location stuffs
-
-
-struct Relationships: Codable, Hashable {
-    let breeds: BreedRelationship?
-    let species: SpeciesRelationship?
-    let statuses: StatusRelationship?
-    let locations: LocationRelationship?
-    let orgs: OrgRelationship?
+struct Included: Codable, Hashable {
+//    let type: String
+//    let id: String
+    let attributes: IncludedAttributes
 }
 
-struct BreedRelationship: Codable, Hashable {
-    let data: [BreedData]
+struct IncludedAttributes: Codable, Hashable {
+//        let name: String?
+//        let singular: String?
+//        let plural: String?
+//        let youngSingular: String?
+//        let youngPlural: String?
+//        let description: String?
+//        let street: String?
+//        let phone: String?
+//        let lat: Double?
+//        let lon: Double?
+//        let coordinates: String?
+    let city: String?
+    let state: String?
+//        let postalcode: String?
+//        let country: String?
+//        let email: String?
+//        let url: String?
+//        let services: String?
+//        let `type`: String?
+//        let citystate: String?
 }
-
-struct BreedData: Codable, Hashable {
-    let type: String
-    let id: String
-}
-
-struct SpeciesRelationship: Codable, Hashable {
-    let data: [SpeciesData]
-}
-
-struct SpeciesData: Codable, Hashable {
-    let type: String
-    let id: String
-}
-
-struct StatusRelationship: Codable, Hashable {
-    let data: [StatusData]
-}
-
-struct StatusData: Codable, Hashable {
-    let type: String
-    let id: String
-}
-
-struct LocationRelationship: Codable, Hashable {
-    let data: [LocationData]
-}
-
-struct LocationData: Codable, Hashable {
-    let type: String
-    let id: String
-}
-
-struct OrgRelationship: Codable, Hashable {
-    let data: [OrgData]
-}
-
-struct OrgData: Codable, Hashable {
-    let type: String
-    let id: String
-}
-
-struct PictureRelationship: Codable, Hashable {
-    let data: [PictureData]
-}
-
-struct PictureData: Codable, Hashable {
-    let type: String
-    let id: String
-}
-
-// Decode JSON data into Swift structs
