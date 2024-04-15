@@ -13,7 +13,7 @@ struct SwipeView: View {
     var body: some View {
         VStack {
             ZStack {
-                Image("whisker-bg")
+                Image("whisker-bg2")
                     .resizable()
                     .ignoresSafeArea()
                     .scaledToFill()
