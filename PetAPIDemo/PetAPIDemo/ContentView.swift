@@ -11,12 +11,12 @@ struct ContentView: View {
     @StateObject var vm = PetViewModel()
     var body: some View {
         switch vm.state {
-            case .idle:
-                IdleView(vm: vm)
-            case .loading:
-                LoadingView()
-            case .working:
-                SwipeView(vm: vm)
+        case .idle:
+            IdleView(vm: vm)
+        case .loading:
+            LoadingView()
+        case .working:
+            SwipeView(vm: vm)
         }
     }
 }

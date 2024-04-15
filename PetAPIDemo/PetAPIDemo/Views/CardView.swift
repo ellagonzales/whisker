@@ -10,7 +10,9 @@ import SwiftUI
 struct CardView: View {
     @ObservedObject var vm: PetCardViewModel
     @State private var offset = CGSize.zero
-    @State private var color: Color = .white
+    
+    // Updated background to reflect system settings
+    @State private var color: Color = Color(UIColor.systemBackground) 
     
     @State private var showingMoreInfo: Bool = false
     
@@ -18,43 +20,59 @@ struct CardView: View {
         ZStack {
             Rectangle()
                 .frame(width: 370, height: 700)
-                .border(.white, width: 6.0)
-                .cornerRadius(4.0)
+                .cornerRadius(15)
                 .foregroundColor(color) //.opacity(0.9))
-                .shadow(radius: 4)
-                
+                //.shadow(color: Color.secondary, radius: 4)
+            
             VStack {
                 if let image = try? vm.getImage() {
                     Image(uiImage: image)
                         .resizable()
                         .scaledToFit()
+                        .cornerRadius(15)
                         .frame(width: 250, height: 500)
+                        
                 } else {
                     Text("No image available")
                 }
-                HStack {
-                    Text(vm.getName())
-                        .font(.largeTitle)
-                        .foregroundColor(.primary)
-                        .bold()
-                }
-                HStack {
-                    Text("\(vm.getPrimaryBreed())")
-                        .font(.callout)
+                
+                VStack(alignment: .leading) {
+                    // For when the name is long
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        Text(vm.getName())
+                            .font(.largeTitle)
+                            .foregroundColor(.primary)
+                            .bold()
+                            .lineLimit(1)
+                    }
+                    .frame(height: 40)
+                    Text(vm.getPrimaryBreed())
+                        .font(.headline)
                         .foregroundColor(.secondary)
                         .italic()
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 80)
+                .padding(.bottom, 10)
                         
                 Button {
                     withAnimation {
                         showingMoreInfo = true
                     }
                 } label: {
-                    Text("More Info")
-                        .font(.headline)
-                        .foregroundColor(.blue)
-                        .bold()
-                        .padding(.top)
+                    HStack{
+                        Text("Learn more about me!")
+                            .font(.title3)
+                            .foregroundColor(Color.white)
+                            .bold()
+                
+                        Image(systemName: "pawprint.fill")
+                            .foregroundColor(.white)
+                    }
+                    .padding(.vertical, 12)
+                    .padding(.horizontal, 30)
+                    .background(LinearGradient(gradient: Gradient(colors: [Color.pink, .yellow1]), startPoint: .leading, endPoint: .trailing))
+                    .cornerRadius(30)
                 }
             }
             
@@ -103,7 +121,8 @@ struct CardView: View {
             color = .red
         case 130...500:
             color = .green
-        default: color = .white
+        // Updated to system color
+        default: color = Color(UIColor.systemBackground)
         }
     }
 }
