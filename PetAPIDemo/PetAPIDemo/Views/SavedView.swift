@@ -14,7 +14,7 @@ struct SavedView: View {
     var body: some View {
         List {
             ForEach (items) { animal in
-                Text(animal.pet.attributes.name ?? "Noah")
+                Text(animal.name ?? "Noah")
             }
         }
     }

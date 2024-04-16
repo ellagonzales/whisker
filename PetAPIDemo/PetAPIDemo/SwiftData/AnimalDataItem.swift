@@ -11,12 +11,35 @@ import SwiftData
 @Model
 class AnimalDataItem: Identifiable {
     
-    var id: String
-    var pet: Animal
+    @Attribute(.unique) var id: String
+    var ageGroup: String?
+    var ageString: String?
+    var birthDate: String?
+    var breedPrimary: String?
+    var breedSecondary: String?
+    var colorDetails: String?
+    var descriptionText: String?
+    var name: String?
+    var pictureThumbnailUrl: String?
+    var sex: String?
+    var sizeUOM: String?
+    var createdDate: String?
+    var updatedDate: String?
     
     init(pet: Animal) {
-        self.id = UUID().uuidString
-        self.pet = pet
+        id = UUID().uuidString
+        ageGroup = pet.attributes.ageGroup
+        ageString = pet.attributes.ageString
+        birthDate = pet.attributes.birthDate
+        breedPrimary = pet.attributes.breedPrimary
+        breedSecondary = pet.attributes.breedSecondary
+        colorDetails = pet.attributes.colorDetails
+        descriptionText = pet.attributes.descriptionText
+        name = pet.attributes.name
+        pictureThumbnailUrl = pet.attributes.pictureThumbnailUrl
+        sex = pet.attributes.sex
+        sizeUOM = pet.attributes.sizeUOM
+        createdDate = pet.attributes.createdDate
+        updatedDate = pet.attributes.updatedDate
     }
-    
 }
