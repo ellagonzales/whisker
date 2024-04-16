@@ -14,7 +14,20 @@ struct DetailsView: View {
 
     var body: some View {
         List {
-            Section(header: Text("Pet Information")) {
+            Section(header: HStack {
+                Text("Pet Information")
+                Spacer()
+                Button(action: {
+                    withAnimation {
+                        showingMoreInfo = false
+                    }
+                }) {
+                    Image(systemName: "xmark")
+                        .foregroundColor(.red)
+                        .bold()
+                        .imageScale(.large)
+                }
+            }) {
                 HStack {
                     Text("Name")
                     Spacer()
@@ -51,20 +64,9 @@ struct DetailsView: View {
             Section(header: Text("Location")) {
                 Text("\(vm.getCity()), \(vm.getState())")
             }
-            
-            Button {
-                withAnimation {
-                    showingMoreInfo = false
-                }
-            } label: {
-                Text("Dismiss")
-                    .foregroundColor(.red)
-            }
         }
-        .navigationTitle("More Information")
     }
 }
-
 struct DetailsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
