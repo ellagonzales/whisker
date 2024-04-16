@@ -24,13 +24,21 @@ struct CardView: View {
                 .shadow(radius: 4)
                 
             VStack {
-                if let image = try? vm.getImage() {
-                    Image(uiImage: image)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 250, height: 500)
+                if let imageUrl = vm.pet.attributes.pictureThumbnailUrl {
+                    AsyncImage(url: URL(string: imageUrl)) { phase in
+                        if let image = phase.image {
+                            image.resizable()
+                                .scaledToFit()
+                                .cornerRadius(15)
+                                .frame(width: 250, height: 500)
+                        } else if phase.error != nil {
+                           // add missing image card
+                        } else {
+                            ProgressView()
+                        }
+                    }
                 } else {
-                    Text("No image available")
+                    ProgressView()
                 }
                 HStack {
                     Text(vm.getName())
