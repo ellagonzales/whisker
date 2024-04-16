@@ -1,6 +1,22 @@
 import Foundation
 import UIKit
 
+
+// Request struct
+
+struct FilterData: Codable {
+    let data: FilterInfo
+}
+
+struct FilterInfo: Codable {
+    let filterRadius: FilterRadius
+}
+
+struct FilterRadius: Codable {
+    let miles: Int
+    let postalcode: Int
+}
+
 // Response structs
 
 struct AnimalData: Codable {
@@ -48,9 +64,18 @@ struct AnimalAttributes: Codable, Hashable {
 }
 
 struct Included: Codable, Hashable {
-//    let type: String
-//    let id: String
     let attributes: IncludedAttributes
+    
+    static var example: Included {
+        let attributes = IncludedAttributes(
+            phone: "9195195946",
+            city: "Durham",
+            state: "North Carolina",
+            email: "albm@unc.edu"
+        )
+        
+        return Included(attributes: attributes)
+    }
 }
 
 struct IncludedAttributes: Codable, Hashable {
@@ -61,7 +86,7 @@ struct IncludedAttributes: Codable, Hashable {
 //        let youngPlural: String?
 //        let description: String?
 //        let street: String?
-//        let phone: String?
+        let phone: String?
 //        let lat: Double?
 //        let lon: Double?
 //        let coordinates: String?
@@ -69,7 +94,7 @@ struct IncludedAttributes: Codable, Hashable {
     let state: String?
 //        let postalcode: String?
 //        let country: String?
-//        let email: String?
+        let email: String?
 //        let url: String?
 //        let services: String?
 //        let `type`: String?

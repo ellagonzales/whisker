@@ -10,21 +10,23 @@ import UIKit
 
 class PetCardViewModel: ObservableObject {
     @Published var pet: Animal
+    @Published var included: Included
     
-    init(pet: Animal) {
+    init(pet: Animal, included: Included) {
         self.pet = pet
+        self.included = included
     }
     
     func getName() -> String {
         return pet.attributes.name ?? "Unknown"
     }
     
-    func getImage() throws -> UIImage {
+    func getImage() throws -> UIImage? {
         guard let url = URL(string: pet.attributes.pictureThumbnailUrl!) else {
             print("URL failed")
             throw NSError()
         }
-        
+        // https://cdn.rescuegroups.org/9101/pictures/animals/20291/20291274/98029625.jpg?width=100
         let data = try Data(contentsOf: url) // threads error. Synchronous URL loading
         
         guard let image = UIImage(data: data) else {
@@ -60,6 +62,22 @@ class PetCardViewModel: ObservableObject {
     
     func getSecondaryBreed() -> String {
         return pet.attributes.breedSecondary ?? ""
+    }
+    
+    func getCity() -> String {
+        return included.attributes.city ?? "Unknown"
+    }
+    
+    func getState() -> String {
+        return included.attributes.state ?? "Unknown"
+    }
+    
+    func getPhone() -> String {
+        return included.attributes.phone ?? "Unknown"
+    }
+    
+    func getEmail() -> String {
+        return included.attributes.email ?? "Unknown"
     }
     
 }

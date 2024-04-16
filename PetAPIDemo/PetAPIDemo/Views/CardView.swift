@@ -109,5 +109,5 @@ struct CardView: View {
 }
 
 #Preview {
-    CardView(vm: PetCardViewModel(pet: Animal.example))
+    CardView(vm: PetCardViewModel(pet: Animal.example, included: Included.example))
 }
