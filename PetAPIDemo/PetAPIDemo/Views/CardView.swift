@@ -12,7 +12,7 @@ struct CardView: View {
     @State private var offset = CGSize.zero
     
     // Updated background to reflect system settings
-    @State private var color: Color = Color(UIColor.systemBackground) 
+    @State private var color: Color = Color(UIColor.systemBackground)
     
     @State private var showingMoreInfo: Bool = false
     
@@ -22,7 +22,7 @@ struct CardView: View {
                 .frame(width: 370, height: 700)
                 .cornerRadius(15)
                 .foregroundColor(color) //.opacity(0.9))
-                //.shadow(color: Color.secondary, radius: 4)
+            //.shadow(color: Color.secondary, radius: 4)
             
             VStack {
                 if let imageUrl = vm.pet.attributes.pictureThumbnailUrl {
@@ -33,11 +33,12 @@ struct CardView: View {
                                 .cornerRadius(15)
                                 .frame(width: 250, height: 500)
                         } else if phase.error != nil {
-                           // add missing image card
+                            // add missing image card
                         } else {
                             ProgressView()
                         }
                     }
+                }
                 
                 VStack(alignment: .leading) {
                     // For when the name is long
@@ -57,7 +58,7 @@ struct CardView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 80)
                 .padding(.bottom, 10)
-                        
+                
                 Button {
                     withAnimation {
                         showingMoreInfo = true
@@ -68,7 +69,7 @@ struct CardView: View {
                             .font(.title3)
                             .foregroundColor(Color.white)
                             .bold()
-                
+                        
                         Image(systemName: "pawprint.fill")
                             .foregroundColor(.white)
                     }
@@ -102,7 +103,7 @@ struct CardView: View {
                 }
         )
     }
-
+    
     func swipeCard(width: CGFloat) {
         switch width {
         case -500...(-150):
@@ -124,7 +125,7 @@ struct CardView: View {
             color = .red
         case 130...500:
             color = .green
-        // Updated to system color
+            // Updated to system color
         default: color = Color(UIColor.systemBackground)
         }
     }
