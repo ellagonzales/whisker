@@ -5,46 +5,52 @@
 //  Created by Ben Chesser on 4/10/24.
 //
 
+import SwiftData
 import SwiftUI
 
 struct CardView: View {
     @ObservedObject var vm: PetCardViewModel
     @State private var offset = CGSize.zero
+    @Environment(\.modelContext) var context
     
     // Updated background to reflect system settings
-    @State private var color: Color = Color(UIColor.systemBackground) 
+    @State private var color: Color = .init(UIColor.systemBackground)
     
     @State private var showingMoreInfo: Bool = false
     
     var body: some View {
         ZStack {
             Rectangle()
-                .frame(width: 370, height: 700)
+                .frame(width: 370, height: 630)
                 .cornerRadius(15)
-                .foregroundColor(color) //.opacity(0.9))
-                //.shadow(color: Color.secondary, radius: 4)
+                .foregroundColor(color) // .opacity(0.9))
+            // .shadow(color: Color.secondary, radius: 4)
             
             VStack {
-                if let image = try? vm.getImage() {
-                    Image(uiImage: image)
-                        .resizable()
-                        .scaledToFit()
-                        .cornerRadius(15)
-                        .frame(width: 250, height: 500)
-                        
+                if let imageUrl = vm.pet.attributes.pictureThumbnailUrl {
+                    AsyncImage(url: URL(string: imageUrl)) { phase in
+                        if let image = phase.image {
+                            image.resizable()
+                                .scaledToFit()
+                                .cornerRadius(15)
+                                .frame(width: 250, height: 450)
+                        } else if phase.error != nil {
+                            missingImageCard()
+                        } else {
+                           ProgressView()
+                        }
+                    }
                 } else {
-                    Text("No image available")
+                    missingImageCard()
                 }
                 
                 VStack(alignment: .leading) {
                     // For when the name is long
-                    ScrollView(.horizontal, showsIndicators: false) {
                         Text(vm.getName())
                             .font(.largeTitle)
                             .foregroundColor(.primary)
                             .bold()
                             .lineLimit(1)
-                    }
                     .frame(height: 40)
                     Text(vm.getPrimaryBreed())
                         .font(.headline)
@@ -60,7 +66,7 @@ struct CardView: View {
                         showingMoreInfo = true
                     }
                 } label: {
-                    HStack{
+                    HStack {
                         Text("Learn more about me!")
                             .font(.title3)
                             .foregroundColor(Color.white)
@@ -75,12 +81,15 @@ struct CardView: View {
                     .cornerRadius(30)
                 }
             }
-            
-            if showingMoreInfo {
+            .sheet(isPresented: $showingMoreInfo) {
                 DetailsView(vm: vm, showingMoreInfo: $showingMoreInfo)
-                    .zIndex(1)
-                    .transition(.move(edge: .bottom))
             }
+//
+//            if showingMoreInfo {
+//                DetailsView(vm: vm, showingMoreInfo: $showingMoreInfo)
+//                    .zIndex(1)
+//                    .transition(.move(edge: .bottom))
+//            }
         }
         .offset(x: offset.width, y: offset.height * 0.4)
         .rotationEffect(.degrees(Double(offset.width / 40)))
@@ -99,7 +108,10 @@ struct CardView: View {
                 }
         )
     }
-
+    @ViewBuilder
+    func missingImageCard() -> some View {
+        Image(systemName:"x")
+    }
     func swipeCard(width: CGFloat) {
         switch width {
         case -500...(-150):
@@ -109,10 +121,16 @@ struct CardView: View {
         case 150...500:
             // Add what needs to be done when they swip RIGHT
             offset = CGSize(width: 500, height: 0)
+            addItem(beast: vm.getAnimal())
             
         default:
             offset = .zero
         }
+    }
+    
+    func addItem(beast: Animal) {
+        let item = AnimalDataItem(pet: beast)
+        context.insert(item)
     }
     
     func changeColor(width: CGFloat) {

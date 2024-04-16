@@ -17,16 +17,16 @@ struct DetailsView: View {
             Section(header: HStack {
                 Text("Pet Information")
                 Spacer()
-                Button(action: {
-                    withAnimation {
-                        showingMoreInfo = false
-                    }
-                }) {
-                    Image(systemName: "xmark")
-                        .foregroundColor(.red)
-                        .bold()
-                        .imageScale(.large)
-                }
+//                Button(action: {
+//                    withAnimation {
+//                        showingMoreInfo = false
+//                    }
+//                }) {
+//                    Image(systemName: "xmark")
+//                        .foregroundColor(.red)
+//                        .bold()
+//                        .imageScale(.large)
+//                }
             }) {
                 HStack {
                     Text("Name")
