@@ -111,7 +111,7 @@ struct CardView: View {
 
     @ViewBuilder
     func missingImageCard() -> some View {
-        Image(systemName:"x")
+        Image(systemName:"photo.artframe")
     }
   
     func swipeCard(width: CGFloat) {
@@ -132,7 +132,9 @@ struct CardView: View {
     
     func addItem(beast: Animal) {
         let item = AnimalDataItem(pet: beast)
+        print(item)
         context.insert(item)
+        print("item added")
     }
     
     func changeColor(width: CGFloat) {

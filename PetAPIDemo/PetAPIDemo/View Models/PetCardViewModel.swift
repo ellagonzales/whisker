@@ -51,21 +51,21 @@ class PetCardViewModel: ObservableObject {
     
     func getAnimal() -> Animal {
         return pet
-
+    }
+        
     func getCity() -> String {
         return included.attributes.city ?? "N/A"
     }
-    
+        
     func getState() -> String {
         return included.attributes.state ?? "N/A"
     }
-    
+        
     func getPhone() -> String {
         return included.attributes.phone ?? "N/A"
     }
-    
+        
     func getEmail() -> String {
         return included.attributes.email ?? "N/A"
     }
-    
 }

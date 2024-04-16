@@ -15,7 +15,6 @@ class AnimalDataItem: Identifiable {
     var pet: Animal
     
     init(pet: Animal) {
-        
         self.id = UUID().uuidString
         self.pet = pet
     }
