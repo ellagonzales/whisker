@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct PetAPIDemoApp: App {
@@ -13,5 +14,6 @@ struct PetAPIDemoApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: AnimalDataItem.self)
     }
 }

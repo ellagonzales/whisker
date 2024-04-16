@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var vm = PetViewModel()
+    @State private var showingSavedView = false
+
     var body: some View {
         switch vm.state {
         case .idle:
@@ -16,7 +18,14 @@ struct ContentView: View {
         case .loading:
             LoadingView()
         case .working:
-            SwipeView(vm: vm)
+            NavigationStack {
+                SwipeView(vm: vm)
+
+                //            LazyHStack {
+                //                <#code#>
+                //            }
+                //            .scrollTransition(transition: T##(EmptyVisualEffect, ScrollTransitionPhase) -> VisualEffect)
+            }
         }
     }
 }

@@ -49,6 +49,9 @@ class PetCardViewModel: ObservableObject {
         return pet.attributes.breedSecondary ?? ""
     }
     
+    func getAnimal() -> Animal {
+        return pet
+
     func getCity() -> String {
         return included.attributes.city ?? "N/A"
     }

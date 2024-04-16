@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SwipeView: View {
     @StateObject var vm: PetViewModel
-    
+
     var body: some View {
         VStack {
             ZStack {
@@ -22,10 +22,28 @@ struct SwipeView: View {
                     CardView(vm: PetCardViewModel(pet: pet, included: vm.included[index!]))
                 }
             }
+            .tabItem {
+                Label("Swipe", systemImage: "arrowshape.turn.up.forward")
+            }
+            .toolbarBackground(.visible, for: .tabBar)
+            SavedView()
+                .tabItem {
+                    Label("Saved", systemImage: "tray.full.fill" )
+                        .padding(.top)
+                }
+                .toolbarBackground(.visible, for: .tabBar)
         }
+
+//        NavigationLink {
+//            SavedView()
+//        } label: {
+//            Text("Checked Saved")
+//        }
     }
 }
 
 #Preview {
-    SwipeView(vm: PetViewModel())
+    NavigationStack {
+        SwipeView(vm: PetViewModel())
+    }
 }
