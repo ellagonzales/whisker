@@ -18,7 +18,8 @@ struct SwipeView: View {
                     .ignoresSafeArea()
                     .scaledToFill()
                 ForEach(vm.pets, id: \.self) { pet in
-                    CardView(vm: PetCardViewModel(pet: pet))
+                    let index = vm.pets.firstIndex(of: pet)
+                    CardView(vm: PetCardViewModel(pet: pet, included: vm.included[index!]))
                 }
             }
         }

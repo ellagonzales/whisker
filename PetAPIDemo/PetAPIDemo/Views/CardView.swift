@@ -25,16 +25,19 @@ struct CardView: View {
                 //.shadow(color: Color.secondary, radius: 4)
             
             VStack {
-                if let image = try? vm.getImage() {
-                    Image(uiImage: image)
-                        .resizable()
-                        .scaledToFit()
-                        .cornerRadius(15)
-                        .frame(width: 250, height: 500)
-                        
-                } else {
-                    Text("No image available")
-                }
+                if let imageUrl = vm.pet.attributes.pictureThumbnailUrl {
+                    AsyncImage(url: URL(string: imageUrl)) { phase in
+                        if let image = phase.image {
+                            image.resizable()
+                                .scaledToFit()
+                                .cornerRadius(15)
+                                .frame(width: 250, height: 500)
+                        } else if phase.error != nil {
+                           // add missing image card
+                        } else {
+                            ProgressView()
+                        }
+                    }
                 
                 VStack(alignment: .leading) {
                     // For when the name is long
@@ -128,5 +131,5 @@ struct CardView: View {
 }
 
 #Preview {
-    CardView(vm: PetCardViewModel(pet: Animal.example))
+    CardView(vm: PetCardViewModel(pet: Animal.example, included: Included.example))
 }
