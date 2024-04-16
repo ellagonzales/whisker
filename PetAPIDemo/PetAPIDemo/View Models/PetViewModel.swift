@@ -11,6 +11,7 @@ import UIKit
 @MainActor
 class PetViewModel: ObservableObject {
     @Published var pets: [Animal] = []
+    @Published var included: [Included] = []
     @Published var state: loadingState = .idle
     
     enum loadingState {
@@ -21,7 +22,9 @@ class PetViewModel: ObservableObject {
     
     func fetchPets() async throws {
         state = .loading
-        pets = try await PetService.fetchPets()
+        let data = try await PetService.fetchPets()
+        pets = data.data
+        included = data.included
         state = .working
     }
 }

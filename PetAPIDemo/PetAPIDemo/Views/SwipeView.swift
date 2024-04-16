@@ -11,16 +11,15 @@ struct SwipeView: View {
     @StateObject var vm: PetViewModel
 
     var body: some View {
-        TabView {
-            VStack {
-                ZStack {
-                    Image("whisker-bg2")
-                        .resizable()
-                        .ignoresSafeArea()
-                        .scaledToFill()
-                    ForEach(vm.pets, id: \.self) { pet in
-                        CardView(vm: PetCardViewModel(pet: pet))
-                    }
+        VStack {
+            ZStack {
+                Image("whisker-bg2")
+                    .resizable()
+                    .ignoresSafeArea()
+                    .scaledToFill()
+                ForEach(vm.pets, id: \.self) { pet in
+                    let index = vm.pets.firstIndex(of: pet)
+                    CardView(vm: PetCardViewModel(pet: pet, included: vm.included[index!]))
                 }
             }
             .tabItem {

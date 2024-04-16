@@ -60,7 +60,7 @@ struct CardView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 80)
                 .padding(.bottom, 10)
-                        
+                
                 Button {
                     withAnimation {
                         showingMoreInfo = true
@@ -71,7 +71,7 @@ struct CardView: View {
                             .font(.title3)
                             .foregroundColor(Color.white)
                             .bold()
-                
+                        
                         Image(systemName: "pawprint.fill")
                             .foregroundColor(.white)
                     }
@@ -108,10 +108,12 @@ struct CardView: View {
                 }
         )
     }
+
     @ViewBuilder
     func missingImageCard() -> some View {
         Image(systemName:"x")
     }
+  
     func swipeCard(width: CGFloat) {
         switch width {
         case -500...(-150):
@@ -139,12 +141,12 @@ struct CardView: View {
             color = .red
         case 130...500:
             color = .green
-        // Updated to system color
+            // Updated to system color
         default: color = Color(UIColor.systemBackground)
         }
     }
 }
 
 #Preview {
-    CardView(vm: PetCardViewModel(pet: Animal.example))
+    CardView(vm: PetCardViewModel(pet: Animal.example, included: Included.example))
 }
