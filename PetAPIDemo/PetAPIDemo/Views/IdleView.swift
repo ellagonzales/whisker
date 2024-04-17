@@ -10,7 +10,7 @@ import SwiftUI
 struct IdleView: View {
     @ObservedObject var vm: PetViewModel
     @State private var isAnimating = false
-    
+    @State private var showingMoreInfo: Bool = false
     var body: some View {
         Button(action: {
             Task {
@@ -29,12 +29,33 @@ struct IdleView: View {
                     .onAppear {
                         isAnimating = true
                     }
-                    .frame(width: 400, height: 400)
+                    .frame(width: 200, height: 200)
                 
-                Text("Click Here to Explore Pet Profiles!")
+                Text("Explore Pet Profiles!")
                     .font(.title2)
-                    .padding(.top, 20)
+                    .fontDesign(.rounded)
+                    .fontWeight(.semibold)
                     .foregroundColor(Color.primary)
+                Button {
+                    withAnimation {
+                        showingMoreInfo.toggle()
+                    }
+                } label: {
+                    HStack {
+                        Text("Add Filters")
+                            .font(.title3)
+                            .foregroundColor(Color.white)
+                            .bold()
+                    }
+                    .padding(.vertical, 12)
+                    .padding(.horizontal, 30)
+                    .background(LinearGradient(gradient: Gradient(colors: [Color.pink, .yellow1]), startPoint: .leading, endPoint: .trailing))
+                    .cornerRadius(30)
+                }
+                .padding()
+            }
+            .sheet(isPresented: $showingMoreInfo) {
+                FilterView(showingMoreInfo: $showingMoreInfo, vm: vm)
             }
         }
     }

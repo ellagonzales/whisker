@@ -123,15 +123,15 @@ struct CardView: View {
         case 150...500:
             // Add what needs to be done when they swip RIGHT
             offset = CGSize(width: 500, height: 0)
-            addItem(beast: vm.getAnimal())
+            addItem(pet: vm.getAnimal(), vm: vm)
             
         default:
             offset = .zero
         }
     }
     
-    func addItem(beast: Animal) {
-        let item = AnimalDataItem(pet: beast)
+    func addItem(pet: Animal, vm: PetCardViewModel) {
+        let item = AnimalDataItem(pet: pet, vm: vm)
         print(item)
         context.insert(item)
         print("item added")

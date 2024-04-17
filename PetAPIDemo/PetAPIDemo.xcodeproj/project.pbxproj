@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F80FF13F2BCF34C600054C2B /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80FF13E2BCF34C600054C2B /* FilterView.swift */; };
 		F8577ACD2BC6E77600EC6EC4 /* PetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8577ACC2BC6E77600EC6EC4 /* PetViewModel.swift */; };
 		F8577AD32BC6F39D00EC6EC4 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8577AD22BC6F39D00EC6EC4 /* LoadingView.swift */; };
 		F8577AD72BC6F4B000EC6EC4 /* IdleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8577AD62BC6F4B000EC6EC4 /* IdleView.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F80FF13E2BCF34C600054C2B /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		F8577ACC2BC6E77600EC6EC4 /* PetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetViewModel.swift; sourceTree = "<group>"; };
 		F8577AD22BC6F39D00EC6EC4 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		F8577AD62BC6F4B000EC6EC4 /* IdleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdleView.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			children = (
 				F8577AD22BC6F39D00EC6EC4 /* LoadingView.swift */,
 				F8577AD62BC6F4B000EC6EC4 /* IdleView.swift */,
+				F80FF13E2BCF34C600054C2B /* FilterView.swift */,
 				F8E1F3C82BCB5A1A004AE8B3 /* CardView.swift */,
 				F8E1F3CA2BCB5A22004AE8B3 /* DetailsView.swift */,
 				F8E1F3C62BCB5A07004AE8B3 /* SwipeView.swift */,
@@ -202,6 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F80FF13F2BCF34C600054C2B /* FilterView.swift in Sources */,
 				F8B96B6A2BCA146700529110 /* PetCardViewModel.swift in Sources */,
 				F8D761642BBCAC870012EB87 /* PetService.swift in Sources */,
 				F8E1F3C72BCB5A07004AE8B3 /* SwipeView.swift in Sources */,

@@ -25,8 +25,12 @@ class AnimalDataItem: Identifiable {
     var sizeUOM: String?
     var createdDate: String?
     var updatedDate: String?
+    var phone: String?
+    var email: String?
+    var city: String?
+    var state: String?
     
-    init(pet: Animal) {
+    init(pet: Animal, vm: PetCardViewModel) {
         id = UUID().uuidString
         ageGroup = pet.attributes.ageGroup
         ageString = pet.attributes.ageString
@@ -41,5 +45,9 @@ class AnimalDataItem: Identifiable {
         sizeUOM = pet.attributes.sizeUOM
         createdDate = pet.attributes.createdDate
         updatedDate = pet.attributes.updatedDate
+        phone = vm.getPhone()
+        email = vm.getEmail()
+        city = vm.getCity()
+        state = vm.getState()
     }
 }

@@ -11,17 +11,17 @@ struct LoadingView: View {
     var body: some View {
         VStack{
             Text("Welcome to Whisker!")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .padding()
+                .font(.title)
+                .fontDesign(.rounded)
+                .fontWeight(.semibold)
+                .foregroundColor(Color.primary)
             Image("dogandcat")
                 .resizable()
                 .scaledToFit()
-            Text("Finding your purrrfect pet match is just a 'paw' away...")
-                .font(.title2)
-                .fontWeight(.medium)
+            Text("Hold on while we find your purrrfect pet match...")
+                .font(.title3)
+                .fontWeight(.semibold)
                 .italic()
-                .padding()
                 .multilineTextAlignment(.center)
         }
     }
