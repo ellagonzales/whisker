@@ -13,7 +13,7 @@ class PetService: ObservableObject {
     private static let encoder = JSONEncoder()
     
     static func fetchPets( miles: Int, postal: Int) async throws -> AnimalData {
-        guard let url = URL(string: "https://api.rescuegroups.org/v5/public/animals/search/available/haspic?sort=random&limit=25") else {
+        guard let url = URL(string: "https://api.rescuegroups.org/v5/public/animals/search/available/haspic?sort=random&limit=100") else {
             fatalError("Invalid URL")
         }
         var request = URLRequest(url: url)
@@ -28,7 +28,20 @@ class PetService: ObservableObject {
         
         let (data, _) = try await URLSession.shared.data(for: request)
         let result = try decoder.decode(AnimalData.self, from: data)
-        return result
+        
+        var cleanedData: [Animal] = []
+        var cleanedIncluded: [Included] = []
+        
+        for index in result.data.indices {
+            if result.included[index].attributes.city != nil && result.included[index].attributes.state != nil {
+                if result.included[index].attributes.phone != nil || result.included[index].attributes.email != nil {
+                    cleanedData.append(result.data[index])
+                    cleanedIncluded.append(result.included[index])
+                }
+            }
+        }
+        
+        return AnimalData(data: cleanedData, included: cleanedIncluded)
     }
     
 }

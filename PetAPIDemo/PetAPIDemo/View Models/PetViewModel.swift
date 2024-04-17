@@ -13,7 +13,7 @@ class PetViewModel: ObservableObject {
     @Published var pets: [Animal] = []
     @Published var included: [Included] = []
     @Published var state: loadingState = .idle
-    @Published var miles: Int = 25 
+    @Published var miles: Int = 50
     @Published var postal: Int = 27707 // autopopulate based on user location
     
     enum loadingState {
@@ -29,4 +29,5 @@ class PetViewModel: ObservableObject {
         included = data.included
         state = .working
     }
+    
 }
