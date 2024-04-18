@@ -19,10 +19,17 @@ struct SavedView: View {
                 } label: {
                     Text(animal.name ?? "Noah")
                 }
+                .swipeActions() {
+                    Button("Delete", systemImage: "trash", role: .destructive) {
+                        context.delete(animal)
+                      }
+                }
             }
         }
     }
 }
+
+
 
 #Preview {
     SavedView()
