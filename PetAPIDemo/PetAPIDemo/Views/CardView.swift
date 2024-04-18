@@ -21,6 +21,11 @@ struct CardView: View {
     var body: some View {
         ZStack {
             Rectangle()
+                .frame(width: 375, height: 635)
+                .cornerRadius(15)
+                .foregroundColor(.primary)
+            
+            Rectangle()
                 .frame(width: 370, height: 630)
                 .cornerRadius(15)
                 .foregroundColor(color) // .opacity(0.9))
@@ -33,7 +38,7 @@ struct CardView: View {
                             image.resizable()
                                 .scaledToFit()
                                 .cornerRadius(15)
-                                .frame(width: 250, height: 450)
+                                .frame(width: 325, height: 450)
                         } else if phase.error != nil {
                             missingImageCard()
                         } else {
@@ -44,21 +49,28 @@ struct CardView: View {
                     missingImageCard()
                 }
                 
-                VStack(alignment: .leading) {
+                VStack(alignment: .center) {
                     // For when the name is long
+                    HStack(alignment: .lastTextBaseline) {
                         Text(vm.getName())
-                            .font(.largeTitle)
-                            .foregroundColor(.primary)
-                            .bold()
-                            .lineLimit(1)
-                    .frame(height: 40)
-                    Text(vm.getPrimaryBreed())
-                        .font(.headline)
-                        .foregroundColor(.secondary)
+                                .font(.largeTitle)
+                                .foregroundColor(.primary)
+                                .bold()
+                                .lineLimit(1)
+                            .frame(height: 40)
+                    }
+                    HStack {
+                        Image(systemName: "location.circle.fill")
+                            .foregroundColor(.secondary)
+                        Text("\(vm.getPrimaryBreed()) in \(vm.getCity()), \(vm.getState())")
+                            .font(.headline)
+                            .foregroundColor(.secondary)
                         .italic()
+                    }
+                    .frame(width: 350)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 80)
+                // .frame(maxWidth: .infinity, alignment: .leading)
+                // .padding(.horizontal, 50)
                 .padding(.bottom, 10)
                 
                 Button {

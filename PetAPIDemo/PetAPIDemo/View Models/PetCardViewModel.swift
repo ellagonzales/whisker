@@ -17,6 +17,11 @@ class PetCardViewModel: ObservableObject {
         self.included = included
     }
     
+    init(pet: AnimalDataItem) {
+        self.pet = Animal(attributes: AnimalAttributes(ageGroup: pet.ageGroup, ageString: pet.ageString, birthDate: pet.birthDate, breedPrimary: pet.breedPrimary, breedSecondary: pet.breedSecondary, colorDetails: pet.colorDetails, descriptionText: pet.descriptionText, name: pet.name, pictureThumbnailUrl: pet.pictureThumbnailUrl, sex: pet.sex, sizeUOM: pet.sizeUOM, createdDate: pet.createdDate, updatedDate: pet.updatedDate))
+        self.included = Included(attributes: IncludedAttributes(phone: pet.phone, city: pet.city, state: pet.state, email: pet.email))
+    }
+    
     func getName() -> String {
         return pet.attributes.name ?? "N/A"
     }
@@ -26,7 +31,7 @@ class PetCardViewModel: ObservableObject {
     }
     
     func getAge() -> String {
-        return pet.attributes.ageString ?? "N/A"
+        return pet.attributes.ageString ?? "Unknown Age"
     }
     
     func getAgeGroup() -> String {
@@ -51,6 +56,10 @@ class PetCardViewModel: ObservableObject {
     
     func getAnimal() -> Animal {
         return pet
+    }
+    
+    func getIncluded() -> Included {
+        return included
     }
         
     func getCity() -> String {

@@ -13,8 +13,12 @@ struct SavedView: View {
     @Query var items: [AnimalDataItem]
     var body: some View {
         List {
-            ForEach (items) { animal in
-                Text(animal.name ?? "Noah")
+            ForEach (items.reversed()) { animal in
+                NavigationLink {
+                    SavedCardView(vm: PetCardViewModel(pet: animal))
+                } label: {
+                    Text(animal.name ?? "Noah")
+                }
             }
         }
     }

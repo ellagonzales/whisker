@@ -23,6 +23,7 @@
 		F8E1F3CB2BCB5A22004AE8B3 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E1F3CA2BCB5A22004AE8B3 /* DetailsView.swift */; };
 		FE4512C52BCE064D0087A2A3 /* AnimalDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4512C42BCE064D0087A2A3 /* AnimalDataItem.swift */; };
 		FE4512C72BCE09E50087A2A3 /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4512C62BCE09E50087A2A3 /* SavedView.swift */; };
+		FE4512CD2BD08AE00087A2A3 /* SavedCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4512CC2BD08AE00087A2A3 /* SavedCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		F8E1F3CA2BCB5A22004AE8B3 /* DetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		FE4512C42BCE064D0087A2A3 /* AnimalDataItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalDataItem.swift; sourceTree = "<group>"; };
 		FE4512C62BCE09E50087A2A3 /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedView.swift; sourceTree = "<group>"; };
+		FE4512CC2BD08AE00087A2A3 /* SavedCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				F8E1F3CA2BCB5A22004AE8B3 /* DetailsView.swift */,
 				F8E1F3C62BCB5A07004AE8B3 /* SwipeView.swift */,
 				FE4512C62BCE09E50087A2A3 /* SavedView.swift */,
+				FE4512CC2BD08AE00087A2A3 /* SavedCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				F8D761662BBCAEE80012EB87 /* Models.swift in Sources */,
 				F8E1F3C92BCB5A1A004AE8B3 /* CardView.swift in Sources */,
 				FE4512C52BCE064D0087A2A3 /* AnimalDataItem.swift in Sources */,
+				FE4512CD2BD08AE00087A2A3 /* SavedCardView.swift in Sources */,
 				F8577AD32BC6F39D00EC6EC4 /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
