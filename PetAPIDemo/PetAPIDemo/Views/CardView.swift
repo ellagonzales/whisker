@@ -20,10 +20,10 @@ struct CardView: View {
     
     var body: some View {
         ZStack {
-            Rectangle()
+            /*Rectangle()
                 .frame(width: 375, height: 635)
                 .cornerRadius(15)
-                .foregroundColor(.primary)
+                .foregroundColor(.primary)*/
             
             Rectangle()
                 .frame(width: 370, height: 630)
@@ -57,7 +57,10 @@ struct CardView: View {
                                 .foregroundColor(.primary)
                                 .bold()
                                 .lineLimit(1)
-                            .frame(height: 40)
+                                // Fixed long name bug
+                                .truncationMode(.tail)
+                                .frame(width: 325, height: 40)
+                                //.frame(height: 40)
                     }
                     HStack {
                         Image(systemName: "location.circle.fill")
