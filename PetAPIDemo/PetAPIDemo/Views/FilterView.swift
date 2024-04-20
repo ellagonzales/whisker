@@ -14,25 +14,30 @@ struct FilterView: View {
     @State var miles: String = ""
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text("**Enter a Postal Code**")
-                    .foregroundStyle(.black)
-                TextField("\(vm.postal.description)", text: $postal)
-                    .multilineTextAlignment(.trailing)
+        VStack {
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("**Enter a Postal Code**")
+                        .foregroundStyle(.black)
+                    TextField("\(vm.postal.description)", text: $postal)
+                        .multilineTextAlignment(.trailing)
+                }
+                .padding()
+                HStack {
+                    Text("**Enter Radius in Miles**")
+                        .foregroundStyle(.black)
+                    TextField("\(vm.miles.description)", text: $miles)
+                        .multilineTextAlignment(.trailing)
+                }
+                .padding()
             }
-            .padding()
-            HStack {
-                Text("**Enter Radius in Miles**")
-                    .foregroundStyle(.black)
-                TextField("\(vm.miles.description)", text: $miles)
-                    .multilineTextAlignment(.trailing)
-            }
-            .padding()
             Button {
                 vm.miles = Int(miles) ?? vm.miles
                 vm.postal = Int(postal) ?? vm.postal
                 showingMoreInfo.toggle()
+                Task {
+                    try await vm.fetchPets()
+                }
             } label: {
                 HStack {
                     Text("Submit")
@@ -44,7 +49,7 @@ struct FilterView: View {
                 .padding(.horizontal, 30)
                 .background(LinearGradient(gradient: Gradient(colors: [Color.pink, .yellow1]), startPoint: .leading, endPoint: .trailing))
                 .cornerRadius(30)
-        }
+            }
         }
     }
 }
