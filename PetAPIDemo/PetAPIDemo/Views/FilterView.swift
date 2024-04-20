@@ -29,7 +29,6 @@ struct FilterView: View {
                     .multilineTextAlignment(.trailing)
             }
             .padding()
-        }
             Button {
                 vm.miles = Int(miles) ?? vm.miles
                 vm.postal = Int(postal) ?? vm.postal
@@ -45,6 +44,7 @@ struct FilterView: View {
                 .padding(.horizontal, 30)
                 .background(LinearGradient(gradient: Gradient(colors: [Color.pink, .yellow1]), startPoint: .leading, endPoint: .trailing))
                 .cornerRadius(30)
+        }
         }
     }
 }

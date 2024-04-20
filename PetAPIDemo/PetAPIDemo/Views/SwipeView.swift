@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SwipeView: View {
     @StateObject var vm: PetViewModel
+    @State var isShowingMoreInfo = false
 
     var body: some View {
         TabView {
@@ -34,6 +35,11 @@ struct SwipeView: View {
                             .padding(.top)
                     }
                     .toolbarBackground(.visible, for: .tabBar)
+                FilterView(showingMoreInfo: $isShowingMoreInfo, vm: vm)
+                    .tabItem {
+                        Label("Settigs", systemImage: "gear")
+                            .toolbarBackground(.visible, for: .tabBar)
+                    }
             }
 
             //        NavigationLink {
