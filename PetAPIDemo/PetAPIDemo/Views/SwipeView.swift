@@ -19,6 +19,25 @@ struct SwipeView: View {
                         .resizable()
                         .ignoresSafeArea()
                         .scaledToFill()
+                    Button {
+                        Task {
+                            try await vm.fetchPets()
+                        }
+                    } label: {
+                        HStack {
+                            Text("Refresh Pets!")
+                                .font(.title3)
+                                .foregroundColor(Color.white)
+                                .bold()
+                            
+                            Image(systemName: "pawprint.fill")
+                                .foregroundColor(.white)
+                        }
+                        .padding(.vertical, 12)
+                        .padding(.horizontal, 30)
+                        .background(LinearGradient(gradient: Gradient(colors: [Color.pink, .yellow1]), startPoint: .leading, endPoint: .trailing))
+                        .cornerRadius(30)
+                    }
                     ForEach(vm.pets, id: \.self) { pet in
                         let index = vm.pets.firstIndex(of: pet)
                         CardView(vm: PetCardViewModel(pet: pet, included: vm.included[index!]))
@@ -41,12 +60,6 @@ struct SwipeView: View {
                             .toolbarBackground(.visible, for: .tabBar)
                     }
             }
-
-            //        NavigationLink {
-            //            SavedView()
-            //        } label: {
-            //            Text("Checked Saved")
-            //        }
         }
     }
 
