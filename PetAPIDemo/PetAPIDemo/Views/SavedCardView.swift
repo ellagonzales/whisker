@@ -11,6 +11,7 @@ import SwiftUI
 
 struct SavedCardView: View {
     @ObservedObject var vm: PetCardViewModel
+    @Environment(\.modelContext) var context
     
     // Updated background to reflect system settings
     @State private var color: Color = .init(UIColor.systemBackground)
@@ -19,11 +20,10 @@ struct SavedCardView: View {
     
     var body: some View {
         ZStack {
-            Rectangle()
-                .frame(width: 370, height: 630)
-                .cornerRadius(15)
-                .foregroundColor(color)
-                .shadow(radius: 10)
+            Image("whisker-bg2")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
             
             VStack {
                 if let imageUrl = vm.pet.attributes.pictureThumbnailUrl {
@@ -32,32 +32,38 @@ struct SavedCardView: View {
                             image.resizable()
                                 .scaledToFit()
                                 .cornerRadius(15)
-                                .frame(width: 250, height: 450)
+                                .frame(width: 325, height: 450)
                         } else if phase.error != nil {
                             missingImageCard()
                         } else {
-                            ProgressView()
+                           ProgressView()
                         }
                     }
                 } else {
                     missingImageCard()
                 }
                 
-                VStack(alignment: .leading) {
+                VStack(alignment: .center) {
                     // For when the name is long
-                    Text(vm.getName())
-                        .font(.largeTitle)
-                        .foregroundColor(.primary)
-                        .bold()
-                        .lineLimit(1)
-                        .frame(height: 40)
-                    Text(vm.getPrimaryBreed())
-                        .font(.headline)
-                        .foregroundColor(.secondary)
+                    HStack(alignment: .lastTextBaseline) {
+                        Text(vm.getName())
+                                .font(.largeTitle)
+                                .foregroundColor(.primary)
+                                .bold()
+                                .lineLimit(1)
+                            .frame(height: 40)
+                    }
+                    .frame(width: 350)
+                    HStack {
+                        Image(systemName: "location.circle.fill")
+                            .foregroundColor(.secondary)
+                        Text("\(vm.getPrimaryBreed()) in \(vm.getCity()), \(vm.getState())")
+                            .font(.headline)
+                            .foregroundColor(.secondary)
                         .italic()
+                    }
+                    .frame(width: 350)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 80)
                 .padding(.bottom, 10)
                 
                 Button {
@@ -85,14 +91,25 @@ struct SavedCardView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     func missingImageCard() -> some View {
         Image(systemName:"photo.artframe")
     }
+  
     
+    func changeColor(width: CGFloat) {
+        switch width {
+        case -500...(-130):
+            color = .red
+        case 130...500:
+            color = .green
+        default: color = Color(UIColor.systemBackground)
+        }
+    }
 }
 
 #Preview {
     SavedCardView(vm: PetCardViewModel(pet: Animal.example, included: Included.example))
 }
+
