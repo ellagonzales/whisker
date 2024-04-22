@@ -20,11 +20,6 @@ struct ContentView: View {
         case .working:
             NavigationStack {
                 SwipeView(vm: vm)
-
-                //            LazyHStack {
-                //                <#code#>
-                //            }
-                //            .scrollTransition(transition: T##(EmptyVisualEffect, ScrollTransitionPhase) -> VisualEffect)
             }
         }
     }
