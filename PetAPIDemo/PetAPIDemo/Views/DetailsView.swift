@@ -15,73 +15,110 @@ struct DetailsView: View {
     var body: some View {
         VStack {
             List {
-                Section(header: HStack {
-                    Text("Pet Information")
-                    Spacer()
-                    //                Button(action: {
-                    //                    withAnimation {
-                    //                        showingMoreInfo = false
-                    //                    }
-                    //                }) {
-                    //                    Image(systemName: "xmark")
-                    //                        .foregroundColor(.red)
-                    //                        .bold()
-                    //                        .imageScale(.large)
-                    //                }
-                }) {
+                VStack(spacing: 15){
+                    HStack {
+                        Image(systemName: "info.circle.fill")
+                            .foregroundColor(Color.secondary)
+                        Text("Pet Information")
+                            .font(.headline)
+                            .foregroundColor(Color.secondary)
+                        Spacer()
+                    }
                     HStack {
                         Text("**Name**")
                         Spacer()
-                        Text(vm.getName())
+                        Text("\(vm.getName())")
                     }
+                    Divider()
                     HStack {
                         Text("**Breed**")
                         Spacer()
                         Text(vm.getPrimaryBreed())
                     }
-                    DisclosureGroup("**Description**", isExpanded: $isDescriptionExpanded) {
+                    Divider()
+                    DisclosureGroup("**About Me**", isExpanded: $isDescriptionExpanded) {
                         Text(vm.getDescription())
                             .font(.body)
                     }
                 }
+                .padding()
+                .background(Color.secondary.opacity(0.1))
+                .cornerRadius(10)
                 
-                Section(header: Text("Details")) {
+                VStack(spacing: 15){
+                    HStack {
+                        Image(systemName: "pawprint.fill")
+                            .foregroundColor(Color.secondary)
+                        Text("Details")
+                            .font(.headline)
+                            .foregroundColor(Color.secondary)
+                        Spacer()
+                    }
                     HStack {
                         Text("**Age**")
                         Spacer()
                         Text("\(vm.getAge()) (\(vm.getAgeGroup()))")
                     }
+                    Divider()
                     HStack {
                         Text("**Sex**")
                         Spacer()
                         Text(vm.getSex())
                     }
                 }
-                
-                Section(header: Text("Contact")) {
-                    HStack{
+                .padding()
+                .background(Color.secondary.opacity(0.1))
+                .cornerRadius(10)
+                 
+                VStack(spacing: 15){
+                    HStack {
+                        Image(systemName: "phone.fill")
+                            .foregroundColor(Color.secondary)
+                        Text("Contact")
+                            .font(.headline)
+                            .foregroundColor(Color.secondary)
+                        Spacer()
+                    }
+                    HStack {
                         Text("**Phone**")
                         Spacer()
-                        Text(vm.getPhone())
+                        Text("\(vm.getPhone())")
                     }
-                    HStack{
+                    Divider()
+                    HStack {
                         Text("**Email**")
                         Spacer()
                         Text(vm.getEmail())
                     }
                 }
-                Section(header: Text("Location")) {
-                    HStack{
+                .padding()
+                .background(Color.secondary.opacity(0.1))
+                .cornerRadius(10)
+            
+                VStack(spacing: 15){
+                    HStack {
+                        Image(systemName: "pin.fill")
+                            .foregroundColor(Color.secondary)
+                        Text("Location")
+                            .font(.headline)
+                            .foregroundColor(Color.secondary)
+                        Spacer()
+                    }
+                    HStack {
                         Text("**City**")
                         Spacer()
-                        Text(vm.getCity())
+                        Text("\(vm.getCity())")
                     }
-                    HStack{
+                    Divider()
+                    HStack {
                         Text("**State**")
                         Spacer()
                         Text(vm.getState())
                     }
                 }
+                .padding()
+                .background(Color.secondary.opacity(0.1))
+                .cornerRadius(10)
             }
             .listSectionSpacing(.compact)
             .listStyle(.inset)

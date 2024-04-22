@@ -45,12 +45,12 @@ struct SwipeView: View {
                 }
             }
                 .tabItem {
-                    Label("Swipe", systemImage: "arrowshape.turn.up.forward")
+                    Label("Swipe", systemImage: "arrowshape.left.arrowshape.right.fill")
                 }
                 .toolbarBackground(.visible, for: .tabBar)
                 SavedView()
                     .tabItem {
-                        Label("Saved", systemImage: "tray.full.fill")
+                        Label("Saved", systemImage: "heart.fill")
                             .padding(.top)
                     }
                     .toolbarBackground(.visible, for: .tabBar)
