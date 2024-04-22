@@ -31,7 +31,7 @@ struct IdleView: View {
                     }
                     .frame(width: 200, height: 200)
                 
-                Text("Explore Pet Profiles!")
+                Text("Click to Explore Pet Profiles!")
                     .font(.title2)
                     .fontDesign(.rounded)
                     .fontWeight(.semibold)

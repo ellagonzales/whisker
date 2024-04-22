@@ -20,7 +20,7 @@ struct SavedCardView: View {
     
     var body: some View {
         ZStack {
-            Image("whisker-bg2")
+            Image("whisker-bg3")
                 .resizable()
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
@@ -48,7 +48,7 @@ struct SavedCardView: View {
                     HStack(alignment: .lastTextBaseline) {
                         Text(vm.getName())
                                 .font(.largeTitle)
-                                .foregroundColor(.primary)
+                                .foregroundColor(Color.black)
                                 .bold()
                                 .lineLimit(1)
                             .frame(height: 40)
@@ -56,10 +56,10 @@ struct SavedCardView: View {
                     .frame(width: 350)
                     HStack {
                         Image(systemName: "location.circle.fill")
-                            .foregroundColor(.secondary)
+                            .foregroundColor(Color.black)
                         Text("\(vm.getPrimaryBreed()) in \(vm.getCity()), \(vm.getState())")
                             .font(.headline)
-                            .foregroundColor(.secondary)
+                            .foregroundColor(Color.black)
                         .italic()
                     }
                     .frame(width: 350)

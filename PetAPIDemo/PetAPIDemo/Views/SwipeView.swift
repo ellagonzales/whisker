@@ -15,7 +15,7 @@ struct SwipeView: View {
         TabView {
             VStack {
                 ZStack {
-                    Image("whisker-bg2")
+                    Image("whisker-bg4")
                         .resizable()
                         .ignoresSafeArea()
                         .scaledToFill()
@@ -60,6 +60,7 @@ struct SwipeView: View {
                             .toolbarBackground(.visible, for: .tabBar)
                     }
             }
+        .accentColor(Color.pink1)
         }
     }
 

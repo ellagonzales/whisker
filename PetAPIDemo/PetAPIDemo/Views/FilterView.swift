@@ -18,14 +18,14 @@ struct FilterView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text("**Enter a Postal Code**")
-                        .foregroundStyle(.black)
+                        .foregroundColor(.primary)
                     TextField("\(vm.postal.description)", text: $postal)
                         .multilineTextAlignment(.trailing)
                 }
                 .padding()
                 HStack {
                     Text("**Enter Radius in Miles**")
-                        .foregroundStyle(.black)
+                        .foregroundColor(.primary)
                     TextField("\(vm.miles.description)", text: $miles)
                         .multilineTextAlignment(.trailing)
                 }

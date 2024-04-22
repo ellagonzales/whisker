@@ -44,6 +44,7 @@ struct DetailsView: View {
                 .padding()
                 .background(Color.secondary.opacity(0.1))
                 .cornerRadius(10)
+                .listRowSeparator(.hidden)
                 
                 VStack(spacing: 15){
                     HStack {
@@ -69,6 +70,7 @@ struct DetailsView: View {
                 .padding()
                 .background(Color.secondary.opacity(0.1))
                 .cornerRadius(10)
+                .listRowSeparator(.hidden)
                  
                 VStack(spacing: 15){
                     HStack {
@@ -94,6 +96,7 @@ struct DetailsView: View {
                 .padding()
                 .background(Color.secondary.opacity(0.1))
                 .cornerRadius(10)
+                .listRowSeparator(.hidden)
             
                 VStack(spacing: 15){
                     HStack {
@@ -119,6 +122,7 @@ struct DetailsView: View {
                 .padding()
                 .background(Color.secondary.opacity(0.1))
                 .cornerRadius(10)
+                .listRowSeparator(.hidden)
             }
             .listSectionSpacing(.compact)
             .listStyle(.inset)

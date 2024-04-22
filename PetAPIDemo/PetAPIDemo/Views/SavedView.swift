@@ -21,7 +21,7 @@ struct SavedView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Image("whisker-bg2")
+                Image("whisker-bg3")
                     .resizable()
                     .scaledToFill()
                     .edgesIgnoringSafeArea(.all)
@@ -31,8 +31,6 @@ struct SavedView: View {
                         ForEach(items.reversed()) { animal in
                             NavigationLink(destination: SavedCardView(vm: PetCardViewModel(pet: animal))) {
                                 ZStack {
-                                    
-
                                     ZStack {
                                         if let imageUrl = animal.pictureThumbnailUrl {
                                             AsyncImage(url: URL(string: imageUrl)) { phase in
@@ -63,6 +61,7 @@ struct SavedView: View {
                                             Spacer()
                                             Text(animal.name ?? "Noah")
                                                 .font(.title3)
+                                                .bold()
                                                 .padding()
                                                 .frame(maxWidth: 180)
                                                 .background(LinearGradient(gradient: Gradient(colors: [Color.pink, .yellow1]), startPoint: .leading, endPoint: .trailing))
