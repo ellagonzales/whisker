@@ -26,6 +26,7 @@ Em**bark** on your journey to find the **pur**fect pet with Whisker, our innovat
 - **Saved Animals Page**: View and manage all the animals you saved by swiping right.
 - **Settings Tab**: Re-enter your desired zip code and radius at any time to refine your search.
 - **Local Storage**: Your saved animals are stored locally, so you can close the app and they’ll still be there when you return.
+- **Light and Dark Mode Support**: The app supports both light and dark modes, automatically adjusting the theme and color scheme to enhance accessibility and user comfort.
 - **MVVM Design Pattern**: The app's code is organized using the Model-View-ViewModel (MVVM) design pattern for maintainability and scalability.
 
 ## Tools and Technologies
