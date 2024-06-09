@@ -30,7 +30,7 @@ Em**bark** on your journey to find the **pur**fect pet with Whisker, our innovat
 - **MVVM Design Pattern**: The app's code is organized using the Model-View-ViewModel (MVVM) design pattern for maintainability and scalability.
 
 ## Tools and Technologies
-
+- **Development Environment**: Swift, SwiftUI, and Xcode were used for app development.
 - **API**: RescueGroups
 - **Version Control**: Git and GitHub for version control and team collaboration.
 - **Design**: User stories and wireframes were created to guide development.
