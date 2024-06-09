@@ -1,6 +1,6 @@
 # Whisker
 
-Em**bark** on your journey to find the **pur**fect pet with Whisker, our innovative adoption app designed to match you with a companion that fits your preferences for size, energy level, and gender. Utilizing RescueGroups API, our app simplifies the search for your next furry friend.
+Em**bark** on your journey to find the **pur**fect pet with Whisker, our innovative adoption app designed to match you with a companion that fits your preferences. Utilizing RescueGroups API, our app simplifies the search for your next furry friend.
 
 ## App Logo
 
