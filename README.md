@@ -3,7 +3,7 @@
 Embark on your journey to find the perfect pet with Whisker, our innovative adoption app designed to match you with a companion that fits your preferences for size, energy level, and gender. Utilizing RescueGroups API, our app simplifies the search for your next furry friend.
 
 ## Video Demo
-[![Whisker Video Demo]](https://youtube.com/shorts/ajmcKza3ATA)
+[[Whisker Video Demo]](https://youtube.com/shorts/ajmcKza3ATA)
 
 ## Features
 
